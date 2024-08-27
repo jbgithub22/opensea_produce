@@ -3,7 +3,8 @@
 This project connects to the OpenSEA stream (non-REST) API to steam NFT transaction data to a kafka topic.
 
 ## Flowchart
-![Data Pipeline Flowchart](https://drive.google.com/file/d/1s4PG76NtN370vjhz5pfoGAafAnnlaKT3/view?usp=sharing)
+![Data Pipeline Flowchart](images/Flowchart%v2.png)
+[Click for larger image](https://drive.google.com/file/d/1s4PG76NtN370vjhz5pfoGAafAnnlaKT3/view?usp=sharing)
 
 ## References:
 - OpenSEA stream API: https://docs.opensea.io/reference/stream-api-overview
