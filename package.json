@@ -11,6 +11,8 @@
   "description": "",
   "dependencies": {
     "dotenv": "^16.4.5",
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "kafkajs": "^2.2.4",
+    "ws": "^8.18.0"
   }
 }
