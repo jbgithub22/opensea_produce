@@ -7,9 +7,9 @@ This project connects to the OpenSEA stream (non-REST) API to steam NFT transact
 [Click for larger image](https://drive.google.com/file/d/1s4PG76NtN370vjhz5pfoGAafAnnlaKT3/view?usp=sharing)
 
 ## Components
-1. OpenSEA Kafka Producer (Node.js)
-2. Kafka and Jupyer-Spark Docker Stack
-3. Kafka Streams App (Java)
+1. OpenSEA Kafka Producer (Node.js) [This repo]
+2. [Kafka and Jupyer-Spark Docker Stack](https://github.com/jbgithub22/kafka-jupyter-spark_docker-stack)
+3. [Kafka Streams App (Java)](https://github.com/jbgithub22/opensea_kafka_streams_app)
 4. Databricks Data Lakehouse
 
 ## References:
