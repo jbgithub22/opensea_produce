@@ -6,6 +6,12 @@ This project connects to the OpenSEA stream (non-REST) API to steam NFT transact
 ![Data Pipeline Flowchart](images/Flowchart%20v2.png)
 [Click for larger image](https://drive.google.com/file/d/1s4PG76NtN370vjhz5pfoGAafAnnlaKT3/view?usp=sharing)
 
+## Components
+1. OpenSEA Kafka Producer (Node.js)
+2. Kafka and Jupyer-Spark Docker Stack
+3. Kafka Streams App (Java)
+4. Databricks Data Lakehouse
+
 ## References:
 ### Books:
 - Joe Reis and Matt Housley (202), Fundamentals of Data Engineering. O’Reilly Media Inc.
