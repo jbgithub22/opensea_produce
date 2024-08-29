@@ -1,4 +1,5 @@
 # OpenSEA Kafka Producer
+## About
 This project connects to the OpenSEA stream (non-REST) API to steam NFT transaction data to a kafka topic.
 
 ## Flowchart
