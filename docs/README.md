@@ -12,6 +12,23 @@ This project connects to the OpenSEA stream (non-REST) API to steam NFT transact
 3. [Kafka Streams App (Java)](https://github.com/jbgithub22/opensea_kafka_streams_app)
 4. Databricks Data Lakehouse
 
+## Project Timeline
+### Phase 1 - Project Setup
+Setup of goals, basic project structure, timeline, virtual environments and version control.
+### Phase 2 - Duct Tape / Rapid Prototyping Phase (Current Phase)
+Get all componented connected and the entire pipeline running in whatever form as quick as possible.
+### Phase 3 - Feature Complete Phase
+All main features implemented. Design Freeze.
+### Phase 4 - Stabilizing Phase
+Start implementation of refactoring, OOP and modular programming. Build infrastructure for health-checks, cybersecurity, exception and logging if not already implemented.
+### Phase 5 - Data Product Design Start
+Assessment of 'Data Product' requirements, design and planning of data transformations required at each point of the pipeline to deliver the required 'Data Product' to the consumer.
+### Phase 6 - Expansion of Data Product Offerings
+Exploration of other data sources, and new data products from these new data sources. ie: X/TikTok sentiment data sources and delivering a sentiment analysis front-end.
+### Phase 7 - Maintenance Phase
+Patches and red-teaming on integrity of data pipeline. Cost-benefit analysis of version upgrades.
+
+
 ## References:
 ### Books:
 - Joe Reis and Matt Housley (202), Fundamentals of Data Engineering. O’Reilly Media Inc.
