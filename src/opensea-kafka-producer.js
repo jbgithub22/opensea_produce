@@ -3,11 +3,13 @@ require('dotenv').config();
 const openseaApiKey = process.env.OPENSEA_API_KEY;
 const { Kafka } = require('kafkajs');
 const { OpenSeaStreamClient, Network } = require('@opensea/stream-js');
+const { WebSocket } = require('ws');
+const { LocalStorage } = require('node-localstorage');
 
 // Initialize Kafka client and producer
 const kafka = new Kafka({
   clientId: 'opensea-producer',
-  brokers: ['localhost:9092'],
+  brokers: ['localhost:9097'],
 });
 const producer = kafka.producer();
 
@@ -23,10 +25,14 @@ async function produceMessages(message) {
 
 // Initialize OpenSea Stream Client
 const client = new OpenSeaStreamClient({
-  token: 'YOUR_OPENSEA_API_KEY',  // Replace with your actual OpenSea API key
+  token: openseaApiKey,           // Replace with your actual OpenSea API key
   network: Network.MAINNET,       // Or Network.TESTNET if you're testing
   onError: (err) => console.error('OpenSea Stream Error:', err),
   logLevel: 'info',               // Adjust log level as needed
+  connectOptions: {
+    transport: WebSocket,         // Use WebSocket transport
+    sessionStorage: LocalStorage
+  }
 });
 
 // Subscribe to the "Item Sold" event for a specific collection
