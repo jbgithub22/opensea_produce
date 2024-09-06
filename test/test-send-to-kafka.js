@@ -18,7 +18,7 @@ async function createTopic() {
     await admin.connect();
     try {
         await admin.createTopics({
-            topics: [{ topic: 'test-topic', numPartitions: 1 }],
+            topics: [{ topic: 'test-os_event', numPartitions: 1 }],
         });
         console.log('Topic created');
     } catch (error) {
@@ -32,19 +32,8 @@ async function createTopic() {
     }
 }
 
-// Test Kafka Producer
-async function testKafkaProducer() {
-  await producer.connect();
-  await producer.send({
-    topic: 'test-topic',
-    messages: [{ value: 'Test message' }],
-  });
-  console.log('Test message sent to Kafka');
-  await producer.disconnect();
-}
-
-// Test OpenSea Stream Client
-async function testOpenSeaClient() {
+// Test OpenSea Producer
+async function testOpenSeaProducer() {
   const client = new OpenSeaStreamClient({
     token: openseaApiKey,
     network: Network.MAINNET,
@@ -60,12 +49,25 @@ async function testOpenSeaClient() {
   const maxEvents = 10;
 
   const eventPromise = new Promise((resolve) => {
+    producer.connect();
     client.onItemSold('*', async (event) => {
-      console.log('Received Item Sold Event:', event);
-      eventCount++;
-      if (eventCount >= maxEvents) {
-        resolve();
-      }
+        console.log('Received Item Sold Event:', eventCount, event);
+        eventCount++;
+
+        // Send event to Kafka
+        try {
+            await producer.send({
+            topic: 'test-os_event',
+            messages: [{ value: JSON.stringify(event) }],
+            });
+        } catch (error) {
+            console.error('Error sending event to Kafka:', error);
+        } 
+
+        if (eventCount >= maxEvents) {
+            console.log('Received 10 events. Disconnecting from OpenSea Stream API and Kafka...');
+            resolve();
+        }
     });
   });
 
@@ -77,11 +79,11 @@ async function testOpenSeaClient() {
 
   // Disconnect the client
   client.disconnect();
+  await producer.disconnect();
 }
 
 // Run tests
 (async () => {
     await createTopic();
-    await testKafkaProducer();
-    await testOpenSeaClient();
+    await testOpenSeaProducer();
 })();
