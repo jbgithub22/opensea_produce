@@ -31,9 +31,11 @@ Get all componented connected and the entire pipeline running in whatever form a
 8. Azure Lakehouse: Achieve writing of simple delta file df data to lakehouse from local Spark Docker container. (done)
 
 To-do:
-1. Lakehouse-Tableau connection
-2. Lakehouse-Plotly Dash connection
-3. Kafka-Plotly Dash live connection
+1. Test 1: 24-hour data stream with hourly batch ingestion to lakehouse.
+2. Test 2: 7-day data stream with hourly batch ingestion to lakehouse.
+3. Lakehouse-Tableau connection
+4. Lakehouse-Plotly Dash connection
+5. Kafka-Plotly Dash live connection
 ### Phase 3 - Feature Complete Phase
 All main features implemented. Design Freeze.
 ### Phase 4 - Stabilizing Phase
