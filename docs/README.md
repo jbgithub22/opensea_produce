@@ -15,8 +15,24 @@ This project connects to the OpenSEA stream (non-REST) API to steam NFT transact
 ## Project Timeline
 ### Phase 1 - Project Setup
 Setup of goals, basic project structure, timeline, virtual environments and version control.
+1. Kafka, Spark, Jupyter Docker images setup, docker-compose setup and 1st git commit.
+2. Node.js project directory setup and 1st git commit.
+3. Java Gradle project directory setup and 1st git commit.
+4. Azure account, git documentation creation and 1st git commit.
 ### Phase 2 - Duct Tape / Rapid Prototyping Phase (Current Phase)
 Get all componented connected and the entire pipeline running in whatever form as quick as possible.
+1. Kafka-Spark-Jupyter Docker stack: run containers. (done)
+2. Kafka: Create test topics. (done)
+3. Spark: Create and run spark session. (done)
+4. Node.js app: Connect to OpenSEA API and produce json transaction console logs. (done)
+5. Node.js app: Produce live json transaction data to kafka topics. (done)
+6. Spark: Achieve consumption of kafka topic and basic transformation to another kafka topic. (done)
+7. Azure Lakehouse: Achieve creation of Bronze, Silver and Gold containers. (done)
+8. Azure Lakehouse: Achieve writing of simple delta file df data to lakehouse from local Spark Docker container. (done)
+To-do:
+1. Lakehouse-Tableau connection
+2. Lakehouse-Plotly Dash connection
+3. Kafka-Plotly Dash live connection
 ### Phase 3 - Feature Complete Phase
 All main features implemented. Design Freeze.
 ### Phase 4 - Stabilizing Phase
