@@ -7,9 +7,9 @@ require('dotenv').config();
 // Initialize Kafka client and producer
 const openseaApiKey = process.env.OPENSEA_API_KEY;
 const kafka = new Kafka({
-        clientId: 'test-producer',
-        brokers: ['localhost:9097'],
-    });
+    clientId: 'test-producer',
+    brokers: ['localhost:9097'],
+  });
 const producer = kafka.producer();
 const admin = kafka.admin();
 
@@ -18,7 +18,7 @@ async function createTopic() {
     await admin.connect();
     try {
         await admin.createTopics({
-            topics: [{ topic: 'test-os_event', numPartitions: 1 }],
+            topics: [{ topic: 'test-os_event_24hr', numPartitions: 4 }],
         });
         console.log('Topic created');
     } catch (error) {
@@ -42,44 +42,48 @@ async function testOpenSeaProducer() {
         connectOptions: {
             transport: WebSocket,
             sessionStorage: LocalStorage
-        }
+      }
     });
-
+  
+    // 24 hours in milliseconds (24 hours * 60 minutes * 60 seconds * 1000 milliseconds)
+    const duration = 24 * 60 * 60 * 1000;
     let eventCount = 0;
-    const maxEvents = 10;
-
+  
     const eventPromise = new Promise((resolve) => {
         producer.connect();
         client.onItemSold('*', async (event) => {
-            console.log('Received Item Sold Event:', eventCount, event);
-            eventCount++;
+            eventCount ++
+            console.log(event, 'Received Item Sold Event: #', eventCount);
 
             // Send event to Kafka
             try {
-                await producer.send({
-                topic: 'test-os_event',
+            await producer.send({
+                topic: 'test-os_event_24hr',
                 messages: [{ value: JSON.stringify(event) }],
-                });
+            });
             } catch (error) {
-                console.error('Error sending event to Kafka:', error);
-            } 
-
-            if (eventCount >= maxEvents) {
-                console.log('Received 10 events. Disconnecting from OpenSea Stream API and Kafka...');
-                resolve();
+            console.error('Error sending event to Kafka:', error);
             }
         });
+  
+      // Set a timeout to run the function for 24 hours
+        setTimeout(() => {
+            console.log('24 hours passed. Disconnecting from OpenSea Stream API and Kafka...');
+            client.disconnect();
+            producer.disconnect();
+            resolve();
+        }, duration);
     });
 
-    // Simulate connection (if needed)
-    client.connect();
+  // Simulate connection (if needed)
+  client.connect();
 
-    // Wait until 10 events are received
-    await eventPromise;
+  // Wait until 10 events are received
+  await eventPromise;
 
-    // Disconnect the client
-    client.disconnect();
-    await producer.disconnect();
+  // Disconnect the client
+  client.disconnect();
+  await producer.disconnect();
 }
 
 // Run tests
