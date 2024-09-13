@@ -17,9 +17,10 @@ Get all componented connected and the entire pipeline running in whatever form a
 7. Azure Lakehouse: Achieve creation of Bronze, Silver and Gold containers. (done)
 8. Azure Lakehouse: Achieve writing of simple delta file df data to lakehouse from local Spark Docker container. (done)
 9. Test 1: Soure-to-Lakehouse pipeline 24 hour running, 5 min batch ingestion to lakehouse. (started/in-progrees)
-10. Lakehouse: Allocated space in local disk for a locally hosted lakehouse for local ETL prototyping. (started/in-progrees)
+10. Lakehouse: Allocated space in local disk for a locally hosted lakehouse for local ETL prototyping. (done)
 11. Lakehouse: Design of bronze container ingestion folder structure. (started/in-progrees)
 12. Lakehouse: Design of bronze container compaction/vacuum workflow. (started/in-progrees)
+13. Lakehouse: First delta compaction spark job. (done)
 
 To-do:
 1. Test 2: 7-day data stream with batch ingestion to lakehouse.
