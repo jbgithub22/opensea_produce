@@ -21,6 +21,12 @@ Get all componented connected and the entire pipeline running in whatever form a
 11. Lakehouse: Design of bronze container ingestion folder structure. (started/in-progrees)
 12. Lakehouse: Design of bronze container compaction/vacuum workflow. (started/in-progrees)
 13. Lakehouse: First delta compaction spark job. (done)
+14. Azure: Create Service Principal in Microsoft Entra. (done)
+15. Azure: Create Key Vault Secret for Sevice Principal. (done)
+16. Azure: Create Azure Data Lake Access Control Assignment for Service Principal. (done)
+17. Azure: Create Key Vault Access Control Assignment for Azure Databricks. (done)
+18. Databricks: Create Secret Scope for Key Vault Access. (done)
+19. Databricks: Connect to Azure ADLS from Azure Databricks Notebook. (done/successful)
 
 To-do:
 1. Test 2: 7-day data stream with batch ingestion to lakehouse.
