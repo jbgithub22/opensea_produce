@@ -27,6 +27,11 @@ Get all componented connected and the entire pipeline running in whatever form a
 17. Azure: Create Key Vault Access Control Assignment for Azure Databricks. (done)
 18. Databricks: Create Secret Scope for Key Vault Access. (done)
 19. Databricks: Connect to Azure ADLS from Azure Databricks Notebook. (done/successful)
+20. Databricks: Create clone of delta table in ADLS Silver container in Databricks SQL Warehouse. (done)
+21. Databricks: Download Partner Connect connection file for Databricks-Tableau conneciton. (done)
+22. Tableau: Navigate and view Databricks SQL Warehouse Table clone of Silver table. (done)
+23. >Phase 2 - Minimum Viable Platform complete: OpenSea Node.js Producer > Local Docker (Kafka > Spark) > Azure ADLS Lakehouse > Databricks > Tableau.
+### Phase 3:
 
 To-do:
 1. Test 2: 7-day data stream with batch ingestion to lakehouse.
